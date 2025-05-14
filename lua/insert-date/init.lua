@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+local function setup()
   vim.api.nvim_create_user_command("Date", function()
     local datetime = os.date("%Y-%m-%d %I:%M:%S %p")
     local buf = vim.api.nvim_get_current_buf()
@@ -28,4 +26,6 @@ function M.setup()
   end, {})
 end
 
-return M
+return  {
+  setup = setup
+}
