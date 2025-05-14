@@ -1,8 +1,16 @@
-local config = require("config.insert-date")
+-- lua/insert-date/init.lua
+
+local config = { format = "%Y-%m-%d %H:%M:%S %p" } -- default format
+
+-- Try to load user config from ~/.config/nvim/lua/config/insert-date.lua
+local ok, user_config = pcall(require, "config.insert-date")
+if ok and type(user_config) == "table" then
+  config = vim.tbl_deep_extend("force", config, user_config)
+end
 
 local function setup()
   vim.api.nvim_create_user_command("Date", function()
-    local datetime = os.date(config.format or "%Y-%m-%d %I:%M:%S %p")
+    local datetime = os.date(config.format)
     local buf = vim.api.nvim_get_current_buf()
 
     local was_modifiable = vim.api.nvim_buf_get_option(buf, "modifiable")
@@ -28,6 +36,7 @@ local function setup()
   end, {})
 end
 
-return  {
+return {
   setup = setup
 }
+
