@@ -1,3 +1,5 @@
+local config = require("config.insert-date")
+
 local function setup()
   vim.api.nvim_create_user_command("Date", function()
     local datetime = os.date(config.format or "%Y-%m-%d %I:%M:%S %p")
