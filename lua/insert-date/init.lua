@@ -1,6 +1,6 @@
 local function setup()
   vim.api.nvim_create_user_command("Date", function()
-    local datetime = os.date("%Y-%m-%d %I:%M:%S %p")
+    local datetime = os.date(config.format or "%Y-%m-%d %I:%M:%S %p")
     local buf = vim.api.nvim_get_current_buf()
 
     local was_modifiable = vim.api.nvim_buf_get_option(buf, "modifiable")
