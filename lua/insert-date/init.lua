@@ -1,6 +1,6 @@
 -- lua/insert-date/init.lua
 
-local config = { format = "%Y-%m-%d %H:%M:%S %p" } -- default format
+local config = { format = "%Y-%m-%dT%H:%M:%S" } -- default format
 
 -- Try to load user config from ~/.config/nvim/lua/config/insert-date.lua
 local ok, user_config = pcall(require, "config.insert-date")
