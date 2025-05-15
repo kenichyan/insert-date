@@ -26,7 +26,9 @@ local function setup()
     if col > #line then col = #line end
 
     -- Format current date using Vim's strftime()
-    local datetime = vim.fn.strftime(config.format)
+    --local datetime = vim.fn.strftime(config.format)
+
+    local datetime = os.date(config.format, os.time(os.date("!*t")))
 
     -- Make buffer modifiable if needed
     local modifiable = vim.api.nvim_buf_get_option(buf, "modifiable")
