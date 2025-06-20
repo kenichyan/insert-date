@@ -1,7 +1,7 @@
 -- insert-date/init.lua
 
 -- Default configuration: ISO 8601 format
-local config = { format = "%Y-%m-%dT%H:%M:%S UTC" }
+local config = { format = "%Y-%m-%dT%H:%M:%S" }
 
 -- Try to load user-defined configuration from config.insert-date
 local ok, user_config = pcall(require, "config.insert-date")
